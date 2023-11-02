@@ -1,0 +1,68 @@
+import 'package:flutter/material.dart';
+import 'package:modern_themes/modern_themes.dart' show Themes;
+import 'package:string_translate/string_translate.dart' hide StandardTranslations;
+import 'package:vocablo/views/home_view.dart';
+
+void main() {
+  runApp(const VocabloApp());
+}
+
+class VocabloApp extends StatefulWidget {
+  const VocabloApp({super.key});
+
+  @override
+  State<VocabloApp> createState() => _VocabloAppState();
+}
+
+class _VocabloAppState extends State<VocabloApp> {
+
+  @override
+  void initState() {
+    Translation.init(
+        supportedLocales: TranslationLocales.all,
+        defaultLocale: TranslationLocales.english,
+        // TODO: add Translations
+        translations: {}
+    );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      /* Development Settings */
+      showSemanticsDebugger: false,
+      showPerformanceOverlay: false,
+      checkerboardRasterCacheImages: false,
+      checkerboardOffscreenLayers: false,
+      // Change to make Screenshots, if screenshots are captured in debug mode
+      debugShowCheckedModeBanner: true,
+      debugShowMaterialGrid: false,
+
+      /* Application Settings */
+      // General
+      title: 'Vocablo',
+      scrollBehavior: const MaterialScrollBehavior(),
+
+      // Routes
+      initialRoute: '/',
+      routes: {
+        '/' : (_) => const Home(),
+      },
+      // Home set to null in order to enable use of routes
+      home: null,
+
+      // Theme
+      themeMode: Themes.themeMode,
+      theme: Themes.lightTheme,
+      darkTheme: Themes.darkTheme,
+      highContrastTheme: Themes.highContrastLightTheme,
+      highContrastDarkTheme: Themes.highContrastDarkTheme,
+
+      // Locale
+      locale: Translation.defaultLocation,
+      supportedLocales: Translation.supportedLocales,
+      localizationsDelegates: TranslationDelegates.localizationDelegates,
+    );
+  }
+}
