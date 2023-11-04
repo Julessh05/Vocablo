@@ -52,7 +52,7 @@ class _HomeState extends State<Home> {
   ListTile buildLanguageContainer(Language language) {
     return ListTile(
       title: Text(language.name),
-      subtitle: Text(language.vocabularies.length.toString()),
+      subtitle: Text('${language.vocabularies.length.toString()} Vocabularies'),
       trailing: const Icon(Icons.arrow_forward_ios),
       isThreeLine: false,
     );
