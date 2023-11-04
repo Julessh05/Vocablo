@@ -1,6 +1,8 @@
+import 'package:bloc_implementation/bloc_implementation.dart';
 import 'package:flutter/material.dart';
 import 'package:modern_themes/modern_themes.dart' show Themes;
 import 'package:string_translate/string_translate.dart' hide StandardTranslations;
+import 'package:vocablo/blocs/home_bloc.dart';
 import 'package:vocablo/views/home_view.dart';
 
 void main() {
@@ -47,7 +49,7 @@ class _VocabloAppState extends State<VocabloApp> {
       // Routes
       initialRoute: '/',
       routes: {
-        '/' : (_) => const Home(),
+        '/' : (_) => BlocParent(bloc: HomeBloc(), child: const Home()),
       },
       // Home set to null in order to enable use of routes
       home: null,
