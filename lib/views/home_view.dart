@@ -7,14 +7,14 @@ import 'package:vocablo/objects/language.dart';
 
 import '../blocs/home_bloc.dart';
 
-class Home extends StatefulWidget {
+final class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+final class _HomeState extends State<Home> {
 
   late final HomeBloc _bloc;
 
@@ -24,6 +24,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: _appBar,
       body: _body,
+      floatingActionButton: _fab,
     );
   }
 
@@ -52,9 +53,18 @@ class _HomeState extends State<Home> {
   ListTile buildLanguageContainer(Language language) {
     return ListTile(
       title: Text(language.name),
-      subtitle: Text('${language.vocabularies.length.toString()} Vocabularies'),
+      subtitle: Text('Contains ${language.vocabularies.length.toString()} Vocabularies'),
       trailing: const Icon(Icons.arrow_forward_ios),
       isThreeLine: false,
+      // TODO: add route name
+      onTap: () => Navigator.pushNamed(context, ''),
     );
   }
+
+
+  FloatingActionButton get _fab => FloatingActionButton(
+    onPressed: () {},
+    clipBehavior: Clip.antiAliasWithSaveLayer,
+    child: const Icon(Icons.add),
+  );
 }

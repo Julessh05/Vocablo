@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:modern_themes/modern_themes.dart' show Themes;
 import 'package:string_translate/string_translate.dart' hide StandardTranslations;
 import 'package:vocablo/blocs/home_bloc.dart';
+import 'package:vocablo/storage/storage.dart';
 import 'package:vocablo/views/home_view.dart';
 
 void main() {
+  Storage.init();
   runApp(const VocabloApp());
 }
 
