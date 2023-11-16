@@ -1,14 +1,14 @@
 library objects;
 
-import 'vocabulary.dart';
+import 'package:flutter/material.dart';
+
 
 final class Language {
+
+  final Key key;
 
   /// The Name of the this Language
   final String name;
 
-  /// All the vocabularies stored in here
-  final List<Vocabulary> vocabularies;
-
-  const Language(this.name, this.vocabularies);
+  const Language(this.key, this.name);
 }

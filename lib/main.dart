@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:modern_themes/modern_themes.dart' show Themes;
 import 'package:string_translate/string_translate.dart' hide StandardTranslations;
 import 'package:vocablo/blocs/home_bloc.dart';
+import 'package:vocablo/data/localization.dart';
 import 'package:vocablo/storage/storage.dart';
 import 'package:vocablo/views/home_view.dart';
 
@@ -25,8 +26,7 @@ class _VocabloAppState extends State<VocabloApp> {
     Translation.init(
         supportedLocales: TranslationLocales.all,
         defaultLocale: TranslationLocales.english,
-        // TODO: add Translations
-        translations: {}
+        translations: translations,
     );
     super.initState();
   }
