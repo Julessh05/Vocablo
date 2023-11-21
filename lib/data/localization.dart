@@ -1,6 +1,7 @@
 import 'dart:ui' show Locale;
 
-import 'package:string_translate/string_translate.dart';
+import 'package:string_translate/string_translate.dart'
+    show StandardTranslations;
 
 const Map<String, Map<Locale, String>> _translations = {
   '': {},

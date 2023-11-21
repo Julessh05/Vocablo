@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart' show Key;
-import 'package:sqflite/sqflite.dart';
+import 'package:sqflite/sqflite.dart'
+    show Database, getDatabasesPath, openDatabase;
 import 'package:vocablo/objects/language.dart';
 import 'package:vocablo/objects/vocabulary.dart';
 import 'package:vocablo/objects/vocabulary_list.dart';
+import 'package:vocablo/objects/vocabulary_query.dart';
 import 'package:vocablo/storage/sql_statements.dart';
 
 final class Storage {
@@ -75,6 +77,23 @@ final class Storage {
         map['name'] as String,
       );
       list.add(vocList);
+    }
+    return list;
+  }
+
+  static Future<List<VocabularyQuery>> get queries async {
+    final List<Map<String, Object?>> result = await database!.query('Query');
+    final List<VocabularyQuery> list = [];
+    for (Map<String, Object?> map in result) {
+      final VocabularyQuery query = VocabularyQuery(
+        Key(map['queryid'] as String),
+        map['name'] as String,
+        map['languageFrom'] as String,
+        map['languageTo'] as String,
+        map['vocCount'] as int,
+        map['bidirectional'] == 1 ? true : false,
+      );
+      list.add(query);
     }
     return list;
   }
