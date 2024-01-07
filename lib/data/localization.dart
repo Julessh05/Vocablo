@@ -1,3 +1,5 @@
+library data;
+
 import 'dart:ui' show Locale;
 
 import 'package:string_translate/string_translate.dart'

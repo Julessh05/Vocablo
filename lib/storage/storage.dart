@@ -1,3 +1,5 @@
+library storage;
+
 import 'package:flutter/material.dart' show Key;
 import 'package:sqflite/sqflite.dart'
     show Database, getDatabasesPath, openDatabase;
@@ -45,7 +47,9 @@ final class Storage {
   }
 
   static Future<List<Vocabulary>> getVocabsForLanguageCombination(
-      String language1, String language2) async {
+    String language1,
+    String language2,
+  ) async {
     final List<Map<String, Object?>> result = await database!.query(
       'Vocabularies',
       // Get all Vocabulary for this Language combination in both directions
